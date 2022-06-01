@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Linq;
 
 namespace SimpleMarsKata
 {
@@ -6,7 +7,11 @@ namespace SimpleMarsKata
     {
         static void Main()
         {
-            Console.WriteLine(new MarsRover("RRLM"));
+
+            var marsRover = new MarsRover();
+            string commands = "RRMRM";
+            marsRover.Execute(commands);
+            Console.WriteLine(marsRover);
         }
     }
 
@@ -15,111 +20,7 @@ namespace SimpleMarsKata
         private int _ycoord;
         private char _direction = 'N';
         private int _xcoord;
-
-        public MarsRover(string commands)
-        {
-            foreach (var command in commands)
-            {
-                if (MovingForward(command))
-                {
-                    if (FacingSouth())
-                    {
-                        MoveDown();
-                    }
-                    else if (FacingNorth())
-                    {
-                        MoveUp();
-                    }
-                }
-                else if (TurningRight(command))
-                {
-                    if (FacingNorth())
-                    {
-                        SetDirectionToEast();
-                    }
-                    else if (FacingEast())
-                    {
-                        SetDirectionToSouth();
-                    }else if (FacingSouth())
-                    {
-                        SetDirectionToWest();
-                    }
-                    else if (FacingWest())
-                    {
-                        SetDirectionToNorth();
-                    }
-                }
-                else if (TurningLeft(command))
-                {
-                    if (FacingWest())
-                    {
-                        SetDirectionToSouth();
-                    }
-                    else if(FacingSouth())
-                    {
-                        SetDirectionToEast();
-                    }
-                    else if (FacingEast())
-                    {
-                        SetDirectionToNorth();
-                    }
-                    else if (FacingNorth())
-                    {
-                        SetDirectionToWest();
-                    }
-                }
-                
-                if (MovingForward(command))
-                {
-                    if (FacingWest())
-                    {
-                        MoveLeft();
-                    }
-                    else
-                    {
-                        MoveRight();
-                    }
-                }
-                else if (TurningRight(command))
-                {
-                    if (FacingWest())
-                    {
-                        SetDirectionToNorth();
-                    }
-                    else if (FacingNorth())
-                    {
-                        SetDirectionToEast();
-                    }else if (FacingEast())
-                    {
-                        SetDirectionToSouth();
-                    }
-                    else if (FacingSouth())
-                    {
-                        SetDirectionToWest();
-                    }
-                }
-                else if (TurningLeft(command))
-                {
-                    if (FacingSouth())
-                    {
-                        SetDirectionToEast();
-                    }
-                    else if(FacingEast())
-                    {
-                        SetDirectionToNorth();
-                    }
-                    else if (FacingNorth())
-                    {
-                        SetDirectionToWest();
-                    }
-                    else if (FacingWest())
-                    {
-                        SetDirectionToSouth();
-                    }
-                }
-            }
-        }
-
+        
         private void MoveDown()
         {
             if (_ycoord == 0)
@@ -131,7 +32,7 @@ namespace SimpleMarsKata
                 _ycoord--;
             }
         }
-        
+
         private void MoveLeft()
         {
             if (_xcoord == 0)
@@ -148,16 +49,26 @@ namespace SimpleMarsKata
         {
             _direction = 'N';
         }
-        
+
         private void MoveUp()
         {
             _ycoord++;
         }
-        
+
         private void MoveRight()
         {
-            _xcoord++;
+            if (_xcoord == 9)
+            {
+                _xcoord = 0;
+            }
+            else
+            {
+                _xcoord++;
+            }
+            
         }
+        
+        
 
         private void SetDirectionToWest()
         {
@@ -182,10 +93,14 @@ namespace SimpleMarsKata
         private bool FacingNorth()
         {
             return _direction == 'N';
-        }private bool FacingSouth()
+        }
+
+        private bool FacingSouth()
         {
             return _direction == 'S';
-        }private bool FacingWest()
+        }
+
+        private bool FacingWest()
         {
             return _direction == 'W';
         }
@@ -209,6 +124,38 @@ namespace SimpleMarsKata
         {
             return $"{_xcoord}:{_ycoord}:{_direction}";
         }
-        
+
+        public void Execute(string commands) => commands.ToList().ForEach(ExecuteCommand);
+
+        private void ExecuteCommand(char command)
+        {
+            if (MovingForward(command)) Move();
+            else if (TurningRight(command)) TurnRight();
+            else if (TurningLeft(command)) TurnLeft();
+        }
+
+        private void TurnLeft()
+        {
+            if (FacingWest()) SetDirectionToSouth();
+            else if (FacingSouth()) SetDirectionToEast();
+            else if (FacingEast()) SetDirectionToNorth();
+            else if (FacingNorth()) SetDirectionToWest();
+        }
+
+        private void TurnRight()
+        {
+            if (FacingNorth()) SetDirectionToEast();
+            else if (FacingEast()) SetDirectionToSouth();
+            else if (FacingSouth()) SetDirectionToWest();
+            else if (FacingWest()) SetDirectionToNorth();
+        }
+
+        private void Move()
+        {
+            if (FacingSouth()) MoveDown();
+            else if (FacingNorth()) MoveUp();
+            else if (FacingWest()) MoveLeft();
+            else MoveRight();
+        }
     }
 }
