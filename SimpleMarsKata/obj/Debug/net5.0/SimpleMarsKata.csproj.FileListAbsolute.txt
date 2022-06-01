@@ -1,0 +1,15 @@
+/Users/janeokeke/RiderProjects/SimpleMarsKata/SimpleMarsKata/bin/Debug/net5.0/SimpleMarsKata.deps.json
+/Users/janeokeke/RiderProjects/SimpleMarsKata/SimpleMarsKata/bin/Debug/net5.0/SimpleMarsKata.runtimeconfig.json
+/Users/janeokeke/RiderProjects/SimpleMarsKata/SimpleMarsKata/bin/Debug/net5.0/SimpleMarsKata.runtimeconfig.dev.json
+/Users/janeokeke/RiderProjects/SimpleMarsKata/SimpleMarsKata/bin/Debug/net5.0/SimpleMarsKata.dll
+/Users/janeokeke/RiderProjects/SimpleMarsKata/SimpleMarsKata/bin/Debug/net5.0/ref/SimpleMarsKata.dll
+/Users/janeokeke/RiderProjects/SimpleMarsKata/SimpleMarsKata/bin/Debug/net5.0/SimpleMarsKata.pdb
+/Users/janeokeke/RiderProjects/SimpleMarsKata/SimpleMarsKata/obj/Debug/net5.0/SimpleMarsKata.csproj.AssemblyReference.cache
+/Users/janeokeke/RiderProjects/SimpleMarsKata/SimpleMarsKata/obj/Debug/net5.0/SimpleMarsKata.GeneratedMSBuildEditorConfig.editorconfig
+/Users/janeokeke/RiderProjects/SimpleMarsKata/SimpleMarsKata/obj/Debug/net5.0/SimpleMarsKata.AssemblyInfoInputs.cache
+/Users/janeokeke/RiderProjects/SimpleMarsKata/SimpleMarsKata/obj/Debug/net5.0/SimpleMarsKata.AssemblyInfo.cs
+/Users/janeokeke/RiderProjects/SimpleMarsKata/SimpleMarsKata/obj/Debug/net5.0/SimpleMarsKata.csproj.CoreCompileInputs.cache
+/Users/janeokeke/RiderProjects/SimpleMarsKata/SimpleMarsKata/obj/Debug/net5.0/SimpleMarsKata.dll
+/Users/janeokeke/RiderProjects/SimpleMarsKata/SimpleMarsKata/obj/Debug/net5.0/ref/SimpleMarsKata.dll
+/Users/janeokeke/RiderProjects/SimpleMarsKata/SimpleMarsKata/obj/Debug/net5.0/SimpleMarsKata.pdb
+/Users/janeokeke/RiderProjects/SimpleMarsKata/SimpleMarsKata/obj/Debug/net5.0/SimpleMarsKata.genruntimeconfig.cache
