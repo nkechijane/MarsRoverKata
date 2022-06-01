@@ -6,7 +6,7 @@ namespace SimpleMarsKata
     {
         static void Main()
         {
-            Console.WriteLine(new MarsRover("RRM"));
+            Console.WriteLine(new MarsRover("RRLM"));
         }
     }
 
@@ -14,6 +14,7 @@ namespace SimpleMarsKata
     {
         private int _ycoord;
         private char _direction = 'N';
+        private int _xcoord;
 
         public MarsRover(string commands)
         {
@@ -64,7 +65,56 @@ namespace SimpleMarsKata
                     }
                     else if (FacingNorth())
                     {
-                        _direction = 'W';
+                        SetDirectionToWest();
+                    }
+                }
+                
+                if (MovingForward(command))
+                {
+                    if (FacingWest())
+                    {
+                        MoveLeft();
+                    }
+                    else
+                    {
+                        MoveRight();
+                    }
+                }
+                else if (TurningRight(command))
+                {
+                    if (FacingWest())
+                    {
+                        SetDirectionToNorth();
+                    }
+                    else if (FacingNorth())
+                    {
+                        SetDirectionToEast();
+                    }else if (FacingEast())
+                    {
+                        SetDirectionToSouth();
+                    }
+                    else if (FacingSouth())
+                    {
+                        SetDirectionToWest();
+                    }
+                }
+                else if (TurningLeft(command))
+                {
+                    if (FacingSouth())
+                    {
+                        SetDirectionToEast();
+                    }
+                    else if(FacingEast())
+                    {
+                        SetDirectionToNorth();
+                    }
+                    else if (FacingNorth())
+                    {
+                        SetDirectionToWest();
+                    }
+                    else if (FacingWest())
+                    {
+                        SetDirectionToSouth();
                     }
                 }
             }
@@ -81,6 +131,18 @@ namespace SimpleMarsKata
                 _ycoord--;
             }
         }
+        
+        private void MoveLeft()
+        {
+            if (_xcoord == 0)
+            {
+                _xcoord = 9;
+            }
+            else
+            {
+                _xcoord--;
+            }
+        }
 
         private void SetDirectionToNorth()
         {
@@ -90,6 +152,11 @@ namespace SimpleMarsKata
         private void MoveUp()
         {
             _ycoord++;
+        }
+        
+        private void MoveRight()
+        {
+            _xcoord++;
         }
 
         private void SetDirectionToWest()
@@ -140,7 +207,8 @@ namespace SimpleMarsKata
 
         public override string ToString()
         {
-            return $"0:{_ycoord}:{_direction}";
+            return $"{_xcoord}:{_ycoord}:{_direction}";
         }
+        
     }
 }
